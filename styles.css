@@ -192,8 +192,6 @@ html { scroll-behavior:smooth; }
   pointer-events: none;
 }
 
-.cip-hero__video--mobile { display: none; }
-
 /* Noise texture overlay */
 .cip-hero::before {
   content: '';
@@ -1559,9 +1557,6 @@ html { scroll-behavior:smooth; }
 }
 
 @media (max-width: 640px) {
-  .cip-hero__video--desktop { display: none; }
-  .cip-hero__video--mobile { display: block; }
-
   .cip-step-grid {
     grid-template-columns: 1fr;
     gap: 24px;
