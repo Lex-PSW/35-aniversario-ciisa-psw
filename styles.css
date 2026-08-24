@@ -1072,7 +1072,7 @@ html { scroll-behavior:smooth; }
 .cip-section__desc {
   color: var(--white);
   font-size: 21px;
-  line-height: 1.7;
+  line-height: 1.8;
   max-width: 560px;
 }
 .cip-section__desc--center {
