@@ -7,6 +7,7 @@
   var monthsEl = document.getElementById('cip-countdown-months');
   var daysEl = document.getElementById('cip-countdown-days');
   var hoursEl = document.getElementById('cip-countdown-hours');
+  var minutesEl = document.getElementById('cip-countdown-minutes');
   var secondsEl = document.getElementById('cip-countdown-seconds');
 
   function pad(n) {
@@ -21,6 +22,7 @@
       monthsEl.textContent = '00';
       daysEl.textContent = '00';
       hoursEl.textContent = '00';
+      minutesEl.textContent = '00';
       secondsEl.textContent = '00';
       return;
     }
@@ -39,11 +41,14 @@
     totalSeconds -= days * 86400;
     var hours = Math.floor(totalSeconds / 3600);
     totalSeconds -= hours * 3600;
-    var seconds = totalSeconds % 60;
+    var minutes = Math.floor(totalSeconds / 60);
+    totalSeconds -= minutes * 60;
+    var seconds = totalSeconds;
 
     monthsEl.textContent = pad(months);
     daysEl.textContent = pad(days);
     hoursEl.textContent = pad(hours);
+    minutesEl.textContent = pad(minutes);
     secondsEl.textContent = pad(seconds);
   }
 
