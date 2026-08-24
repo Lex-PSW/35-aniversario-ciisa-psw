@@ -322,11 +322,19 @@ html { scroll-behavior:smooth; }
   width: 100%;
 }
 
+.cip-hero__date-container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 60px;
+  text-align: center;
+}
+
 .cip-hero__content { max-width: 640px; }
 
 .cip-hero__headlines {
   position: relative;
-  height: max(var(--headline-area-height, 300px), clamp(300px, 34vh, 390px));
+  height: max(var(--headline-area-height, 180px), 180px);
   overflow: hidden;
 }
 
@@ -430,6 +438,17 @@ html { scroll-behavior:smooth; }
   margin-top: 13px;
   margin-bottom: 40px;
   max-width: 480px;
+}
+
+.cip-hero__sub--center {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.cip-hero__sub--traking {
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 200;
 }
 
 .cip-cta-group {
@@ -1058,6 +1077,7 @@ html { scroll-behavior:smooth; }
 }
 .cip-section__desc--center {
   margin: 0 auto;
+  padding-top: 12px;
   text-align: center;
 }
 .cip-form-section--gradient-bg .cip-hero__photo {
@@ -1402,6 +1422,20 @@ html { scroll-behavior:smooth; }
   z-index: 1;
 }
 
+@media (min-width: 901px) {
+  .cip-form-section--gradient-bg .cip-form-inner {
+    align-items: stretch;
+  }
+  .cip-form-section--gradient-bg .cip-hero__image {
+    height: auto;
+    min-height: 100%;
+  }
+  .cip-form-section--gradient-bg .cip-hero__photo {
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
 .cip-location-header { grid-column: 1 / -1; }
 
 .cip-location-map {
@@ -1412,6 +1446,13 @@ html { scroll-behavior:smooth; }
   overflow: hidden;
   border: 1px solid rgba(37,99,235,0.25);
 }
+
+@media (min-width: 901px) {
+  .cip-location-map {
+    grid-column: 1 / -1;
+  }
+}
+
 .cip-location-map iframe {
   position: absolute;
   inset: 0;
@@ -2018,7 +2059,7 @@ html { scroll-behavior:smooth; }
   .cip-timeline__line { display:none; }
   .cip-footer { flex-direction:column; gap:16px; text-align:center; padding:32px 24px; }
   .cip-hero__logo { width: 50%; }
-  .cip-hero__headlines { height: max(var(--headline-area-height, 330px), clamp(330px, 48vh, 430px)); }
+  .cip-hero__headlines { height: max(var(--headline-area-height, 220px), 220px); }
   .psw__logo { width: 8%; }
 }
 

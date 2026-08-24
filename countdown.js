@@ -4,7 +4,6 @@
 
   var targetDate = new Date(el.getAttribute('data-target'));
 
-  var monthsEl = document.getElementById('cip-countdown-months');
   var daysEl = document.getElementById('cip-countdown-days');
   var hoursEl = document.getElementById('cip-countdown-hours');
   var minutesEl = document.getElementById('cip-countdown-minutes');
@@ -19,7 +18,6 @@
     var target = targetDate;
 
     if (target <= now) {
-      monthsEl.textContent = '00';
       daysEl.textContent = '00';
       hoursEl.textContent = '00';
       minutesEl.textContent = '00';
@@ -27,14 +25,7 @@
       return;
     }
 
-    var months = (target.getFullYear() - now.getFullYear()) * 12 + (target.getMonth() - now.getMonth());
-    var cursor = new Date(now.getFullYear(), now.getMonth() + months, now.getDate(), now.getHours(), now.getMinutes(), now.getSeconds());
-    if (cursor > target) {
-      months -= 1;
-      cursor = new Date(now.getFullYear(), now.getMonth() + months, now.getDate(), now.getHours(), now.getMinutes(), now.getSeconds());
-    }
-
-    var diffMs = target.getTime() - cursor.getTime();
+    var diffMs = target.getTime() - now.getTime();
     var totalSeconds = Math.floor(diffMs / 1000);
 
     var days = Math.floor(totalSeconds / 86400);
@@ -45,7 +36,6 @@
     totalSeconds -= minutes * 60;
     var seconds = totalSeconds;
 
-    monthsEl.textContent = pad(months);
     daysEl.textContent = pad(days);
     hoursEl.textContent = pad(hours);
     minutesEl.textContent = pad(minutes);

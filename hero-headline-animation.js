@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const headlines = Array.from(sequence.querySelectorAll('.cip-hero__headline'));
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const wordDelay = 220;
-  const readingPause = 1800;
+  const headlineDisplayDuration = 14000;
   const leavingDuration = 450;
 
   headlines.forEach((headline) => {
@@ -85,6 +85,10 @@ document.addEventListener('DOMContentLoaded', () => {
       await wait(wordDelay);
     }
 
+    const readingPause = Math.max(
+      0,
+      headlineDisplayDuration - (words.length * wordDelay) - leavingDuration
+    );
     await wait(readingPause);
     headline.classList.add('is-leaving');
     await wait(leavingDuration);
