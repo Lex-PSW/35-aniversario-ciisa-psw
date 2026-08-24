@@ -10,17 +10,53 @@ document.addEventListener('DOMContentLoaded', () => {
 
   headlines.forEach((headline) => {
     const text = headline.textContent.replace(/\s+/g, ' ').trim();
+    const words = [];
+    const textWalker = document.createTreeWalker(headline, NodeFilter.SHOW_TEXT);
+    let textNode;
+    while ((textNode = textWalker.nextNode())) {
+      const highlight = textNode.parentElement.closest('[class*="cip-hero__headline-span--"]');
+      textNode.textContent.matchAll(/\S+/g).forEach((wordMatch) => {
+        words.push({
+          text: wordMatch[0],
+          className: highlight ? highlight.className : ''
+        });
+      });
+    }
     headline.setAttribute('aria-label', text);
     headline.textContent = '';
 
-    text.split(' ').forEach((word, wordIndex, words) => {
+    words.forEach((word, wordIndex) => {
       const wordElement = document.createElement('span');
-      wordElement.className = 'cip-hero__headline-word';
+      wordElement.className = `cip-hero__headline-word${word.className ? ` ${word.className}` : ''}`;
       wordElement.setAttribute('aria-hidden', 'true');
-      wordElement.textContent = word;
+      wordElement.textContent = word.text;
       if (wordIndex < words.length - 1) wordElement.style.marginRight = '0.28em';
       headline.appendChild(wordElement);
     });
+  });
+
+  const updateHeadlineAreaHeight = () => {
+    const headlineAreaHeight = Math.max(...headlines.map((headline) => {
+      const measurement = headline.cloneNode(true);
+      measurement.classList.add('is-active');
+      measurement.style.position = 'absolute';
+      measurement.style.inset = 'auto';
+      measurement.style.width = '100%';
+      measurement.style.height = 'auto';
+      measurement.style.visibility = 'hidden';
+      sequence.appendChild(measurement);
+      const height = measurement.getBoundingClientRect().height;
+      measurement.remove();
+      return height;
+    }));
+    sequence.style.setProperty('--headline-area-height', `${headlineAreaHeight}px`);
+  };
+
+  updateHeadlineAreaHeight();
+  let resizeFrame;
+  window.addEventListener('resize', () => {
+    window.cancelAnimationFrame(resizeFrame);
+    resizeFrame = window.requestAnimationFrame(updateHeadlineAreaHeight);
   });
 
   if (reducedMotion) {
