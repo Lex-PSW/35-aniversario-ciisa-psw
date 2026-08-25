@@ -1390,6 +1390,15 @@ html { scroll-behavior:smooth; }
   padding-top: 120px;
   padding-bottom: 120px;
 }
+
+#como-llegar {
+  background: linear-gradient(
+    to bottom,
+    var(--black) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
 .cip-form-inner {
   max-width: 1280px;
   margin: 0 auto;
@@ -1535,12 +1544,7 @@ html { scroll-behavior:smooth; }
    a un degradado translúcido para que el video se vea a través. */
 .cip-form-section--reveal-video {
   position: relative;
-  background: linear-gradient(
-    to bottom,
-    var(--black) 0%,
-    rgba(0,0,0,0.55) 25%,
-    rgba(0,0,0,0.4) 100%
-  );
+  background: transparent;
 }
 
 .cip-feature-item {
