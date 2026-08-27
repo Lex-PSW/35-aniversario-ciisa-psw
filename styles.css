@@ -207,7 +207,7 @@ html { scroll-behavior:smooth; }
   pointer-events: none;
 }
 
-/* Diagonal accent line */
+/* Diagonal accent line 
 .cip-hero::after {
   content: '';
   position: absolute;
@@ -218,7 +218,7 @@ html { scroll-behavior:smooth; }
   background: linear-gradient(180deg, transparent 0%, rgba(37,99,235,0.4) 50%, transparent 100%);
   transform: rotate(-15deg);
   pointer-events: none;
-}
+}*/
 
 .cip-hero__nav {
   position: relative;
